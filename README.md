@@ -1,6 +1,6 @@
 # <img src="logo/open-settings-logo.png" alt="Header" width="24"/> OpenSettings [Docker Image](https://hub.docker.com/r/opensettings/open-settings)
 
-Welcome to the official docker repository for **OpenSettings**!
+Welcome to the official docker repository for [**OpenSettings**](https://opensettings.net)!
 
 OpenSettings is a **centralized settings management** system designed for **.NET applications**. It simplifies app settings management by providing a structured and scalable approach to handling settings.
 
