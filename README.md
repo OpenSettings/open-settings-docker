@@ -1,4 +1,4 @@
-# <img src="logo/open-settings-logo.png" alt="Header" width="24"/> OpenSettings Docker Image
+# <img src="logo/open-settings-logo.png" alt="Header" width="24"/> OpenSettings [Docker Image](https://hub.docker.com/r/opensettings/open-settings)
 
 Welcome to the official docker repository for **OpenSettings**!
 
@@ -13,8 +13,6 @@ The latest OpenSettings documentation is available at [**docs.opensettings.net**
 ## 📂 Repository Structure
 
 This repository contains the necessary files and configurations to run OpenSettings as a provider inside a Docker container. It is designed to make deployment easy while ensuring compatibility with various environments.
-
-https://hub.docker.com/r/opensettings/open-settings
 
 ## 🚀 Getting Started
 
