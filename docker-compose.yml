@@ -2,8 +2,10 @@ version: '3.8'
 
 services:
   opensettings:
-    build: .
-    ports:
-      - "5000:80"
+    image: OpenSettings/open-settings:latest
+    container_name: container-open-settings
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    ports:
+      - "5388:5000"

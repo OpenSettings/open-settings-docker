@@ -18,10 +18,10 @@ var migrationsAssembly = typeof(Program).Assembly.GetName().Name;
 openSettingsProviderConfiguration.Provider.Orm.ConfigureDbContext = optsBuilder =>
 {
     // Configure your database provider here. (e.g. UseSqlServer, UseNpgsql, UseInMemoryDatabase)
-    //optsBuilder.UseInMemoryDatabase("OpenSettings");
-    optsBuilder.UseSqlServer(
-        "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=OpenSettings;Integrated Security=True;MultipleActiveResultSets=True",
-        opts => opts.MigrationsAssembly(migrationsAssembly));
+    optsBuilder.UseInMemoryDatabase("OpenSettings");
+    //optsBuilder.UseSqlServer(
+    //    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=OpenSettings;Integrated Security=True;MultipleActiveResultSets=True",
+    //    opts => opts.MigrationsAssembly(migrationsAssembly));
 };
 
 await builder.Host.UseOpenSettingsAsync(openSettingsProviderConfiguration);
