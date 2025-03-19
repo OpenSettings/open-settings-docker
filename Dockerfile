@@ -6,7 +6,7 @@ RUN dotnet restore ./src/OpenSettings.Api/OpenSettings.Api.csproj
 
 COPY ./src/OpenSettings.Api/ ./src/OpenSettings.Api/
 WORKDIR /app/src/OpenSettings.Api
-RUN dotnet publish -c Release -o /out --no-restore -v diag
+RUN dotnet publish -c Release -o /out --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS runtime
 WORKDIR /app

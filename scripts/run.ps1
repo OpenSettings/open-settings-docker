@@ -1,16 +1,18 @@
 #!/bin/bash
 
-cd ..\
+Set-Location -Path ..\
 
-echo "Running Docker container locally..."
+Write-Host "Running Docker container locally..."
 
-VERSION=${1:-1.0.0-1}
+$VERSION = if ($args.Count -gt 0) { $args[0] } else { "1.0.0-1" }
 
 # Run the Docker container in the background
-docker run -d -p 5388:5000 --name open-settings-container OpenSettings/open-settings:$VERSION
+docker run -d -p 5388:8080 --name container-open-settings OpenSettings/open-settings:$VERSION
 
-echo "Docker container is running locally!"
-echo "Access the application at:"
-echo "  - HTTP: http://localhost:5000"
+Write-Host "Docker container is running locally!"
+Write-Host "Access the application at:"
+Write-Host "  - HTTP: http://localhost:5388"
 
 docker logs container-open-settings
+
+Set-Location -Path .\scripts\
