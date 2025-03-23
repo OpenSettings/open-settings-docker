@@ -8,7 +8,7 @@
       "launchUrl": "settings",
       "applicationUrl": "http://localhost:5288",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "prod-eu"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "https": {

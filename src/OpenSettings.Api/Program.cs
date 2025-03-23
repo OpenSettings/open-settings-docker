@@ -1,40 +1,81 @@
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.ResponseCompression;
+using Ogu.AspNetCore.Compressions;
+using OpenSettings.Api;
 using OpenSettings.AspNetCore;
 using OpenSettings.Configurations;
 using OpenSettings.Extensions;
+using OpenSettings.Helpers;
 using OpenSettings.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var openSettingsProviderConfiguration = new OpenSettingsConfiguration(ServiceType.Provider)
+const string slash = "/";
+const string settingsSpaRelativePath = "/settings";
+
+var configuration = builder.Configuration
+    .AddEnvironmentVariables("OPENSETTINGS_") // OPENSETTINGS_Configuration__DbProviderName=InMemory - OPENSETTINGS_Configuration__ConnectionString=OpenSettings
+    .Build();
+
+var openSettingsConfiguration = configuration.GetSection("Configuration").Get<OpenSettingsConfiguration>();
+
+openSettingsConfiguration.IdentifierName = openSettingsConfiguration.IdentifierName == "Default" ? Helper.GetEnvironmentName() : openSettingsConfiguration.IdentifierName;
+openSettingsConfiguration.Selection = ServiceType.Provider;
+
+var dbResolver = DbResolver.Resolve(configuration);
+
+openSettingsConfiguration.Provider.Orm.ConfigureDbContext = optsBuilder =>
 {
-    Client = new ClientInfo(
-        new Guid("adbdf741-bb4d-4673-b2a8-23e677fcf454"), // The unique identifier for the client. 
-        new Guid("4294a5e3-0839-4358-a03d-1ac52585ae5f")) // The secret key for the client.
+    dbResolver.UseDb(optsBuilder);
 };
 
-var migrationsAssembly = typeof(Program).Assembly.GetName().Name;
+await builder.Host.UseOpenSettingsAsync(openSettingsConfiguration);
 
-openSettingsProviderConfiguration.Provider.Orm.ConfigureDbContext = optsBuilder =>
+builder.Services.Configure<BrotliCompressionProviderOptions>(opts => opts.Level = openSettingsConfiguration.Provider.CompressionLevel);
+builder.Services.Configure<ZstdCompressionProviderOptions>(opts => opts.Level = openSettingsConfiguration.Provider.CompressionLevel);
+builder.Services.Configure<GzipCompressionProviderOptions>(opts => opts.Level = openSettingsConfiguration.Provider.CompressionLevel);
+builder.Services.Configure<DeflateCompressionProviderOptions>(opts => opts.Level = openSettingsConfiguration.Provider.CompressionLevel);
+
+builder.Services.AddResponseCompression(opts =>
 {
-    // Configure your database provider here. (e.g. UseSqlServer, UseNpgsql, UseInMemoryDatabase)
-    optsBuilder.UseInMemoryDatabase("OpenSettings");
-    //optsBuilder.UseSqlServer(
-    //    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=OpenSettings;Integrated Security=True;MultipleActiveResultSets=True",
-    //    opts => opts.MigrationsAssembly(migrationsAssembly));
-};
+    opts.Providers.Add<BrotliCompressionProvider>();
+    opts.Providers.Add<ZstdCompressionProvider>();
+    opts.Providers.Add<GzipCompressionProvider>();
+    opts.Providers.Add<SnappyCompressionProvider>();
+    opts.Providers.Add<DeflateCompressionProvider>();
 
-await builder.Host.UseOpenSettingsAsync(openSettingsProviderConfiguration);
+    opts.MimeTypes = ResponseCompressionDefaults.MimeTypes;
+
+    opts.EnableForHttps = true;
+});
 
 builder.Services
     .AddControllers()
     .AddOpenSettingsController(builder.Configuration); // Enables OpenSettings Controllers
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+});
+
 var app = builder.Build();
 
+app.UseForwardedHeaders();
 app.UseRouting();
+app.Use(async (context, next) =>
+{
+    await next();
+
+    if (context.Request.Path == slash)
+    {
+        context.Response.Redirect(settingsSpaRelativePath);
+    }
+});
+app.UseResponseCompression();
 app.UseOpenSettings(); // Updates instance status when the application is starting or stopping.
 app.UseOpenSettingsSpa();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 await app.RunAsync();

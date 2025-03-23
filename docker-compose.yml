@@ -1,11 +1,10 @@
-version: '3.8'
-
 services:
   opensettings:
     image: OpenSettings/open-settings:latest
     container_name: container-open-settings
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:5000
+      - OPENSETTINGS_Configuration__DbProviderName=InMemory
+      - OPENSETTINGS_Configuration__ConnectionString=OpenSettings
     ports:
       - "5388:8080"

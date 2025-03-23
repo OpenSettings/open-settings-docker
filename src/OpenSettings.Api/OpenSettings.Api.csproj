@@ -2,18 +2,44 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
+	<AssemblyName>OpenSettings.Api</AssemblyName>
+	<Product>OpenSettings.Api</Product>
+	<Authors>OpenSettings</Authors>
+	<Copyright>Copyright (c) OpenSettings 2024</Copyright>
+	<RepositoryType>git</RepositoryType>
+	<PackageIcon>open-settings-logo.png</PackageIcon>
+	<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<NoWarn>$(NoWarn);1591</NoWarn>
+	<AssemblyOriginatorKeyFile>OpenSettings.Api.snk</AssemblyOriginatorKeyFile>
+	<SignAssembly>true</SignAssembly>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-	<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
-    <PackageReference Include="OpenSettings.AspNetCore" Version="1.0.0" />
+  	<None Include="..\..\logo\open-settings-logo.png" Pack="true" PackagePath="\" Visible="false" />
+  	<None Include="README.md" Pack="true" PackagePath="\" Visible="false" />
+  	<None Include="..\..\LICENSE.md" Pack="true" PackagePath="\" Visible="false" />
+  	<None Include="OpenSettings.Api.snk" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
+	  <PrivateAssets>all</PrivateAssets>
+	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+	<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.3" />
+    <PackageReference Include="Ogu.AspNetCore.Compressions" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OpenSettings.Migrations.MySql\OpenSettings.Migrations.MySql.csproj" />
+    <ProjectReference Include="..\OpenSettings.Migrations.Oracle\OpenSettings.Migrations.Oracle.csproj" />
+    <ProjectReference Include="..\OpenSettings.Migrations.PostgreSql\OpenSettings.Migrations.PostgreSql.csproj" />
+    <ProjectReference Include="..\OpenSettings.Migrations.Shared\OpenSettings.Migrations.Shared.csproj" />
+    <ProjectReference Include="..\OpenSettings.Migrations.Sqlite\OpenSettings.Migrations.Sqlite.csproj" />
+    <ProjectReference Include="..\OpenSettings.Migrations.SqlServer\OpenSettings.Migrations.SqlServer.csproj" />
   </ItemGroup>
 
 </Project>

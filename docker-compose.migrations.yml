@@ -1,0 +1,39 @@
+services:
+  mysql:
+    image: mysql:9.2.0
+    container_name: container-migrations-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: Passw0rd123*
+      MYSQL_DATABASE: OpenSettings
+    ports:
+      - "3306:3306"
+
+  oracle:
+    image: container-registry.oracle.com/database/express:21.3.0-xe
+    container_name: container-migrations-oracle
+    restart: unless-stopped
+    environment:
+      ORACLE_PWD: "Passw0rd123*"
+    ports:
+      - "1521:1521"
+
+  postgres:
+    image: postgres:17.4
+    container_name: container-migrations-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: Passw0rd123*
+      POSTGRES_DB: OpenSettings
+    ports:
+      - "5432:5432"
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: container-migrations-sqlserver
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Passw0rd123*"
+    ports:
+      - "1433:1433"

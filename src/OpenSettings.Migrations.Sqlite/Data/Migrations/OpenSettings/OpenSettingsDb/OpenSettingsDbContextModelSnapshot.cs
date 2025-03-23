@@ -2,13 +2,12 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OpenSettings.Domains.Sql.DataContext;
 
 #nullable disable
 
-namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
+namespace OpenSettings.Migrations.Sqlite.Data.Migrations.OpenSettings.OpenSettingsDb
 {
     [DbContext(typeof(OpenSettingsDbContext))]
     partial class OpenSettingsDbContextModelSnapshot : ModelSnapshot
@@ -16,59 +15,51 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.3");
 
             modelBuilder.Entity("OpenSettings.Domains.Sql.Entities.AppGroupSqlModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NameLowercase")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("SortOrder")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("UpdatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedById");
 
                     b.HasIndex("NameLowercase")
-                        .IsUnique()
-                        .HasFilter("[NameLowercase] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("Slug")
-                        .IsUnique()
-                        .HasFilter("[Slug] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("SortOrder");
 
@@ -80,29 +71,29 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
             modelBuilder.Entity("OpenSettings.Domains.Sql.Entities.AppIdentifierMappingSqlModel", b =>
                 {
                     b.Property<int>("AppId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("IdentifierId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
 
                     b.Property<int>("SortOrder")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("UpdatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("AppId", "IdentifierId");
 
@@ -121,67 +112,65 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ClientIdLowercase")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ClientName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ClientNameLowercase")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("DisplayName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("DisplayNameLowercase")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("GroupId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("HashedClientSecret")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("SortOrder")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Type")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("UpdatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("WikiUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -195,8 +184,7 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                     b.HasIndex("GroupId");
 
                     b.HasIndex("Slug")
-                        .IsUnique()
-                        .HasFilter("[Slug] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("UpdatedById");
 
@@ -206,16 +194,16 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
             modelBuilder.Entity("OpenSettings.Domains.Sql.Entities.AppTagMappingSqlModel", b =>
                 {
                     b.Property<int>("AppId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("TagId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("AppId", "TagId");
 
@@ -230,55 +218,53 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("AppId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Consumer")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("IdentifierId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IgnoreIndividualIgnoreOnFileChange")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IgnoreIndividualRegistrationMode")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IgnoreIndividualStoreInSeparateFile")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IgnoreOnFileChange")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Provider")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("RegistrationMode")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
 
                     b.Property<bool>("StoreInSeparateFile")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("UpdatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -298,37 +284,35 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NameLowercase")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("SortOrder")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("UpdatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -337,8 +321,7 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                     b.HasIndex("NameLowercase");
 
                     b.HasIndex("Slug")
-                        .IsUnique()
-                        .HasFilter("[Slug] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("SortOrder");
 
@@ -351,60 +334,58 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("AppId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("DataAccessType")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("DynamicId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Environment")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("IdentifierId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("IpAddress")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("MachineName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NameLowercase")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("ReloadStrategies")
-                        .HasColumnType("nvarchar(max)");
+                    b.PrimitiveCollection<string>("ReloadStrategies")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("ServiceType")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Urls")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Version")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -413,8 +394,7 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                     b.HasIndex("NameLowercase");
 
                     b.HasIndex("AppId", "IdentifierId", "Slug")
-                        .IsUnique()
-                        .HasFilter("[Slug] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Instances");
                 });
@@ -423,57 +403,55 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Edition")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("ExpiredOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("ExpiryDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("Features")
-                        .HasColumnType("nvarchar(max)");
+                    b.PrimitiveCollection<string>("Features")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Holder")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("HolderLowercase")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsExpired")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsRevoked")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("IssuedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Key")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("NotBefore")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ReferenceId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ReferenceIdLowercase")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("RevokedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -484,8 +462,7 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                     b.HasIndex("IsExpired");
 
                     b.HasIndex("ReferenceIdLowercase")
-                        .IsUnique()
-                        .HasFilter("[ReferenceIdLowercase] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Licenses");
                 });
@@ -494,14 +471,14 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<string>("Key")
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ExpiryTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Owner")
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Key");
 
@@ -512,46 +489,46 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CreatorName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("ExpiredOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<TimeSpan?>("ExpiresIn")
-                        .HasColumnType("time");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsExpired")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Metadata")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Source")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Type")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("UpdatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -566,42 +543,40 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid>("Identifier")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Namespace")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Properties")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("RowVersion")
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
 
                     b.Property<int>("SettingId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("UpdatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -619,43 +594,44 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("CompressionLevel")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("CompressionType")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("Data")
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
 
                     b.Property<Guid?>("RestoredById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
+
+                    b.Property<int>("SerializerType")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("SettingId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Version")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -668,8 +644,7 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                     b.HasIndex("Version");
 
                     b.HasIndex("Slug", "SettingId")
-                        .IsUnique()
-                        .HasFilter("[Slug] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("SettingHistories");
                 });
@@ -678,66 +653,78 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("AppId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("CompressionLevel")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("CompressionType")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid>("ComputedIdentifier")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("CopiedFromId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("CopiedOn")
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("Data")
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
 
                     b.Property<bool>("DataRestored")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("DataValidationDisabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("IdentifierId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool?>("IgnoreOnFileChange")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsCopied")
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsDraft")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("RegistrationMode")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
+
+                    b.Property<int>("SerializerType")
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("StoreInSeparateFile")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("UpdatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Version")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CopiedFromId");
 
                     b.HasIndex("CreatedById");
 
@@ -755,49 +742,45 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NameLowercase")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("SortOrder")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("UpdatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedById");
 
                     b.HasIndex("NameLowercase")
-                        .IsUnique()
-                        .HasFilter("[NameLowercase] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("Slug")
-                        .IsUnique()
-                        .HasFilter("[Slug] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("SortOrder");
 
@@ -809,16 +792,16 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
             modelBuilder.Entity("OpenSettings.Domains.Sql.Entities.UserClaimMappingSqlModel", b =>
                 {
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("ClaimId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId", "ClaimId");
 
@@ -833,39 +816,36 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("TypeLowercase")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ValueLowercase")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Slug")
-                        .IsUnique()
-                        .HasFilter("[Slug] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("UserClaims");
                 });
@@ -873,16 +853,16 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
             modelBuilder.Entity("OpenSettings.Domains.Sql.Entities.UserGroupClaimMappingModel", b =>
                 {
                     b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ClaimId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("GroupId", "ClaimId");
 
@@ -896,16 +876,16 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
             modelBuilder.Entity("OpenSettings.Domains.Sql.Entities.UserGroupMappingSqlModel", b =>
                 {
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId", "GroupId");
 
@@ -919,16 +899,16 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
             modelBuilder.Entity("OpenSettings.Domains.Sql.Entities.UserGroupNotificationMappingSqlModel", b =>
                 {
                     b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid>("NotificationId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("GroupId", "NotificationId");
 
@@ -943,30 +923,27 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NameLowercase")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Slug")
-                        .IsUnique()
-                        .HasFilter("[Slug] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("UserGroups");
                 });
@@ -974,37 +951,37 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
             modelBuilder.Entity("OpenSettings.Domains.Sql.Entities.UserNotificationMappingSqlModel", b =>
                 {
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid>("NotificationId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("DismissedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsDismissed")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsOpened")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsViewed")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("OpenedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("ViewedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId", "NotificationId");
 
@@ -1018,16 +995,16 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
             modelBuilder.Entity("OpenSettings.Domains.Sql.Entities.UserRoleClaimMappingModel", b =>
                 {
                     b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ClaimId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("RoleId", "ClaimId");
 
@@ -1041,16 +1018,16 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
             modelBuilder.Entity("OpenSettings.Domains.Sql.Entities.UserRoleGroupMappingModel", b =>
                 {
                     b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("RoleId", "GroupId");
 
@@ -1064,16 +1041,16 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
             modelBuilder.Entity("OpenSettings.Domains.Sql.Entities.UserRoleMappingSqlModel", b =>
                 {
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<Guid?>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -1088,30 +1065,27 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NameLowercase")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Slug")
-                        .IsUnique()
-                        .HasFilter("[Slug] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("UserRoles");
                 });
@@ -1120,68 +1094,67 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("AuthScheme")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("DisplayName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("EmailLowercase")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("HashedPassword")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Initials")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("LastLogin")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NameLowercase")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("OAuthProvider")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("BLOB");
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UsernameLowercase")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Slug")
-                        .IsUnique()
-                        .HasFilter("[Slug] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
@@ -1413,6 +1386,10 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("OpenSettings.Domains.Sql.Entities.SettingSqlModel", "CopiedFrom")
+                        .WithMany()
+                        .HasForeignKey("CopiedFromId");
+
                     b.HasOne("OpenSettings.Domains.Sql.Entities.UserSqlModel", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
@@ -1428,6 +1405,8 @@ namespace OpenSettings.Api.Data.Migrations.OpenSettings.OpenSettingsDb
                         .HasForeignKey("UpdatedById");
 
                     b.Navigation("App");
+
+                    b.Navigation("CopiedFrom");
 
                     b.Navigation("CreatedBy");
 
