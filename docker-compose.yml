@@ -4,7 +4,22 @@ services:
     container_name: container-open-settings
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - OPENSETTINGS_Configuration__DbProviderName=InMemory
-      - OPENSETTINGS_Configuration__ConnectionString=OpenSettings
+#      - OPENSETTINGS_Configuration__DbProviderName=MySql
+#      - OPENSETTINGS_Configuration__ConnectionString=Server=host.docker.internal;Port=3306;Database=OpenSettings;Uid=root;Pwd=Passw0rd123*
+
+#      - OPENSETTINGS_Configuration__DbProviderName=Oracle
+#      - OPENSETTINGS_Configuration__ConnectionString=Data Source=host.docker.internal:1521/XE;User Id=system;Password=Passw0rd123*
+
+#      - OPENSETTINGS_Configuration__DbProviderName=PostgreSql
+#      - OPENSETTINGS_Configuration__ConnectionString=Server=host.docker.internal;Port=5432;Database=OpenSettings;User Id=postgres;Password=Passw0rd123*
+
+      - OPENSETTINGS_Configuration__DbProviderName=Sqlite
+      - OPENSETTINGS_Configuration__ConnectionString=Data Source=OpenSettings.db
+
+#      - OPENSETTINGS_Configuration__DbProviderName=SqlServer
+#      - OPENSETTINGS_Configuration__ConnectionString=Server=host.docker.internal,1433;Database=OpenSettings;User Id=sa;Password=Passw0rd123*;TrustServerCertificate=True
+
+#      - OPENSETTINGS_Configuration__DbProviderName=InMemory
+#      - OPENSETTINGS_Configuration__ConnectionString=OpenSettings
     ports:
       - "5388:8080"
