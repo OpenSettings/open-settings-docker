@@ -1,4 +1,9 @@
-# <img src="logo/open-settings-logo.png" alt="Header" width="24"/> OpenSettings [Docker Image](https://hub.docker.com/r/opensettings/open-settings)
+# <img src="logo/open-settings-logo.png" alt="Header" width="24"/> OpenSettings Docker Image
+
+![Docker Image Version](https://img.shields.io/docker/v/opensettings/open-settings/[tag]?logo=docker)
+[![Docs](https://img.shields.io/badge/docs-online-blue)](https://docs.opensettings.net)
+[![GitHub](https://img.shields.io/badge/•-open--settings-blue?logo=github)](https://github.com/OpenSettings/open-settings)
+[![GitHub](https://img.shields.io/badge/•-open--settings--spa-blue?logo=github)](https://github.com/OpenSettings/open-settings-spa)
 
 Welcome to the official docker repository for [**OpenSettings**](https://opensettings.net)!
 
