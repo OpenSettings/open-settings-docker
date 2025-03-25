@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OpenSettings.AspNetCore" Version="1.*" />
+    <PackageReference Include="OpenSettings.AspNetCore" Version="1.0.5" />
   </ItemGroup>
 
 </Project>
