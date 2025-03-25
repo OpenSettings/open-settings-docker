@@ -24,13 +24,31 @@ git clone https://github.com/OpenSettings/open-settings-docker.git
 cd open-settings-docker/
 ```
 
-### 2️⃣ Install DocFX  
+### 2️⃣ Run Docker Compose 
 
+Before running the project, ensure that Docker and Docker Compose are installed on your machine. If you're unsure, check the [Docker installation guide](https://docs.docker.com/get-docker/).
 
-### 3️⃣ Build and Serve Documentation Locally
+Run the following command to bring up the necessary containers:
 
+```sh
+docker-compose up
+```
 
-Open your browser and navigate to **[http://localhost:8080](http://localhost:8080)** to preview the documentation! 🚀
+### 3️⃣ Navigate to the Url
+
+Once the containers are running, Open your browser and navigate to **[http://localhost:5388](http://localhost:5388)** to preview the OpenSettings! 🚀
+
+### 4️⃣ Configure Database Provider (Optional)
+
+By default, the Docker Compose configuration uses `Sqlite` as the database provider. However, you can choose a different database provider by updating the `docker-compose.yml` file.
+
+```yaml
+# Default to Sqlite database (this is active by default)
+- OPENSETTINGS_Configuration__DbProviderName=Sqlite
+- OPENSETTINGS_Configuration__ConnectionString=Data Source=OpenSettings.db
+```
+
+comment out the default `Sqlite` lines and uncomment the database provider you want to use. Be sure to also update the connection string with your own credentials.
 
 ## 💡 License  
 
