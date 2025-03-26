@@ -1,6 +1,6 @@
 # <img src="logo/open-settings-logo.png" alt="Header" width="24"/> OpenSettings Docker Image
 
-![Docker Image Version](https://img.shields.io/docker/v/opensettings/open-settings/[tag]?logo=docker)
+![Docker Image Version](https://img.shields.io/docker/v/opensettings/open-settings?logo=docker)
 [![Docs](https://img.shields.io/badge/docs-online-blue)](https://docs.opensettings.net)
 [![GitHub](https://img.shields.io/badge/•-open--settings-blue?logo=github)](https://github.com/OpenSettings/open-settings)
 [![GitHub](https://img.shields.io/badge/•-open--settings--spa-blue?logo=github)](https://github.com/OpenSettings/open-settings-spa)
