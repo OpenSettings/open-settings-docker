@@ -21,15 +21,34 @@ This repository contains the necessary files and configurations to run OpenSetti
 
 ## 🚀 Getting Started
 
-To contribute or run the documentation locally, follow these steps:
+To contribute or run the documentation locally, follow these steps. You can choose between using docker run or Docker Compose:
 
-### 1️⃣ Clone the Repository
+### 1️⃣ Method 1: Run Using Docker Run (No Need to Clone the Repository)
+
+If you don't need to modify the code and just want to quickly run OpenSettings, you can use the following docker run command. This method doesn't require cloning the repository.
+
+Run the OpenSettings container directly from Docker Hub:
+
+```sh
+docker run -d -p 5388:8080 --name container-open-settings OpenSettings/open-settings:latest
+```
+
+This will start the OpenSettings application in a Docker container and map port 8080 from the container to port 5388 on your host machine. You can then navigate to [http://localhost:5388](http://localhost:5388) to preview the OpenSettings app.
+
+For more information on docker usage, please check our comprehensive [Docker guide](docs.opensettings.net).
+
+### 2️⃣ Method 2: Run Using Docker Compose
+
+If you need to modify the code or work with multiple containers (like databases or other services), you can use Docker Compose.
+
+First, clone the repository:
+
 ```sh
 git clone https://github.com/OpenSettings/open-settings-docker.git
 cd open-settings-docker/
 ```
 
-### 2️⃣ Run Docker Compose 
+### 3️⃣ Run Docker Compose 
 
 Before running the project, ensure that Docker and Docker Compose are installed on your machine. If you're unsure, check the [Docker installation guide](https://docs.docker.com/get-docker/).
 
@@ -39,11 +58,11 @@ Run the following command to bring up the necessary containers:
 docker-compose up
 ```
 
-### 3️⃣ Navigate to the Url
+### 4️⃣ Navigate to the Url
 
 Once the containers are running, Open your browser and navigate to **[http://localhost:5388](http://localhost:5388)** to preview the OpenSettings! 🚀
 
-### 4️⃣ Configure Database Provider (Optional)
+### 5️⃣ Configure Database Provider (Optional)
 
 By default, the Docker Compose configuration uses `Sqlite` as the database provider. However, you can choose a different database provider by updating the `docker-compose.yml` file.
 
