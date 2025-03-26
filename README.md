@@ -1,6 +1,6 @@
 # <img src="logo/open-settings-logo.png" alt="Header" width="24"/> OpenSettings Docker Image
 
-![Docker Image Version](https://img.shields.io/docker/v/opensettings/open-settings/[tag]?logo=docker)
+![Docker Image Version](https://img.shields.io/docker/v/opensettings/open-settings?logo=docker)
 [![Docs](https://img.shields.io/badge/docs-online-blue)](https://docs.opensettings.net)
 [![GitHub](https://img.shields.io/badge/•-open--settings-blue?logo=github)](https://github.com/OpenSettings/open-settings)
 [![GitHub](https://img.shields.io/badge/•-open--settings--spa-blue?logo=github)](https://github.com/OpenSettings/open-settings-spa)
@@ -11,7 +11,7 @@ OpenSettings is a **centralized settings management** system designed for **.NET
 
 ![Demo](https://github.com/OpenSettings/open-settings-docs/blob/master/docs/v1/assets/gifs/demo.gif)
 
-## 🌍 Online Documentation
+## 📖 Documentation
 
 The latest OpenSettings documentation is available at [**docs.opensettings.net**](https://docs.opensettings.net)
 
