@@ -6,7 +6,7 @@ Write-Host "Running container locally..."
 
 $VERSION = if ($args.Count -gt 0) { $args[0] } else { "1.0.1-1" }
 
-docker run -d -p 5388:8080 --name container-open-settings OpenSettings/open-settings:$VERSION
+docker run -d -p 5388:8080 --name container-open-settings opensettings/open-settings:$VERSION
 
 Write-Host "Container is running locally!"
 Write-Host "Access the application at: - HTTP: http://localhost:5388"
