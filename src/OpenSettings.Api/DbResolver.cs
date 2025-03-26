@@ -98,7 +98,7 @@ namespace OpenSettings.Api
                 
             if (dbProviderType != DbProviderType.InMemory)
             {
-                throw new InvalidOperationException("Connection string is required for non-in-memory databases.");
+                throw new InvalidOperationException("ConnectionString is required for non-in-memory databases.");
             }
 
             connectionString = "OpenSettings";
@@ -141,6 +141,7 @@ namespace OpenSettings.Api
                 DbProviderType.PostgreSql => Migrations.PostgreSql.Reference.AssemblyName,
                 DbProviderType.Sqlite => Migrations.Sqlite.Reference.AssemblyName,
                 DbProviderType.SqlServer => Migrations.SqlServer.Reference.AssemblyName,
+                DbProviderType.InMemory => string.Empty,
                 _ => string.Empty
             };
         }
