@@ -57,14 +57,14 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t OpenSettings/open-settings:${{ env.VERSION_WITH_RUN }} .
+          docker build -t opensettings/open-settings:${{ env.VERSION_WITH_RUN }} .
 
       - name: Push Docker image to Docker Hub
         run: |
-          docker push docker.io/OpenSettings/open-settings:${{ env.VERSION_WITH_RUN }}
+          docker push opensettings/open-settings:${{ env.VERSION_WITH_RUN }}
           if [ "${{ github.event.inputs.mark_as_latest }}" == "true" ]; then
-            docker tag OpenSettings/open-settings:${{ env.VERSION_WITH_RUN }} OpenSettings/open-settings:latest
-            docker push OpenSettings/open-settings:latest
+            docker tag opensettings/open-settings:${{ env.VERSION_WITH_RUN }} opensettings/open-settings:latest
+            docker push opensettings/open-settings:latest
           fi
      
       - name: Set up GitHub Actions bot user details
