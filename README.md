@@ -30,7 +30,7 @@ If you don't need to modify the code and just want to quickly run OpenSettings, 
 Run the OpenSettings container directly from Docker Hub:
 
 ```sh
-docker run -d -p 5388:8080 --name container-open-settings OpenSettings/open-settings:latest
+docker run -d -p 5388:8080 --name container-open-settings opensettings/open-settings:latest
 ```
 
 This will start the OpenSettings application in a Docker container and map port 8080 from the container to port 5388 on your host machine. You can then navigate to [http://localhost:5388](http://localhost:5388) to preview the OpenSettings app.
