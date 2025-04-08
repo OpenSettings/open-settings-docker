@@ -240,6 +240,9 @@ namespace OpenSettings.Migrations.Oracle.Data.Migrations.OpenSettings.OpenSettin
                     b.Property<string>("Consumer")
                         .HasColumnType("NVARCHAR2(2000)");
 
+                    b.Property<string>("Controller")
+                        .HasColumnType("NVARCHAR2(2000)");
+
                     b.Property<Guid?>("CreatedById")
                         .HasColumnType("RAW(16)");
 
@@ -270,6 +273,9 @@ namespace OpenSettings.Migrations.Oracle.Data.Migrations.OpenSettings.OpenSettin
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .HasColumnType("RAW(2000)");
+
+                    b.Property<string>("Spa")
+                        .HasColumnType("NVARCHAR2(2000)");
 
                     b.Property<bool>("StoreInSeparateFile")
                         .HasColumnType("NUMBER(1)");

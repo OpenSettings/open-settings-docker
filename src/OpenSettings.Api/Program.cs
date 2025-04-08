@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Ogu.AspNetCore.Compressions;
 using OpenSettings.Api;
 using OpenSettings.AspNetCore;
 using OpenSettings.Configurations;
 using OpenSettings.Extensions;
-using OpenSettings.Helpers;
 using OpenSettings.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +19,7 @@ var configuration = builder.Configuration
 
 var openSettingsConfiguration = configuration.GetSection("Configuration").Get<OpenSettingsConfiguration>();
 
-openSettingsConfiguration.IdentifierName = openSettingsConfiguration.IdentifierName == "Default" ? Helper.GetEnvironmentName() : openSettingsConfiguration.IdentifierName;
+openSettingsConfiguration.Provider.LicenseKey = builder.Configuration["Configuration:LicenseKey"];
 openSettingsConfiguration.Selection = ServiceType.Provider;
 
 var dbResolver = DbResolver.Resolve(configuration);
@@ -27,6 +27,7 @@ var dbResolver = DbResolver.Resolve(configuration);
 openSettingsConfiguration.Provider.Orm.ConfigureDbContext = optsBuilder =>
 {
     dbResolver.UseDb(optsBuilder);
+    optsBuilder.ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning));
 };
 
 await builder.Host.UseOpenSettingsAsync(openSettingsConfiguration);
@@ -73,7 +74,6 @@ app.Use(async (context, next) =>
 });
 app.UseResponseCompression();
 app.UseOpenSettings(); // Updates instance status when the application is starting or stopping.
-app.UseOpenSettingsSpa();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

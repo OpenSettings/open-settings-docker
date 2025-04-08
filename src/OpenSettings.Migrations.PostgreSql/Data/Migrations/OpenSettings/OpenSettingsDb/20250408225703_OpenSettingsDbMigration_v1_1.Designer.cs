@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OpenSettings.Domains.Sql.DataContext;
@@ -11,9 +12,11 @@ using OpenSettings.Domains.Sql.DataContext;
 namespace OpenSettings.Migrations.PostgreSql.Data.Migrations.OpenSettings.OpenSettingsDb
 {
     [DbContext(typeof(OpenSettingsDbContext))]
-    partial class OpenSettingsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250408225703_OpenSettingsDbMigration_v1_1")]
+    partial class OpenSettingsDbMigration_v1_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

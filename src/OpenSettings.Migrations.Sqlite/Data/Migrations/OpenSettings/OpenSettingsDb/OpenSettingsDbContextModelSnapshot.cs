@@ -226,6 +226,9 @@ namespace OpenSettings.Migrations.Sqlite.Data.Migrations.OpenSettings.OpenSettin
                     b.Property<string>("Consumer")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Controller")
+                        .HasColumnType("TEXT");
+
                     b.Property<Guid?>("CreatedById")
                         .HasColumnType("TEXT");
 
@@ -256,6 +259,9 @@ namespace OpenSettings.Migrations.Sqlite.Data.Migrations.OpenSettings.OpenSettin
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .HasColumnType("BLOB");
+
+                    b.Property<string>("Spa")
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("StoreInSeparateFile")
                         .HasColumnType("INTEGER");

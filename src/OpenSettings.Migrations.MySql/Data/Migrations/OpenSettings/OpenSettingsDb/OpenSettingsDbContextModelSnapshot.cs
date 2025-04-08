@@ -237,6 +237,9 @@ namespace OpenSettings.Migrations.MySql.Data.Migrations.OpenSettings.OpenSetting
                     b.Property<string>("Consumer")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Controller")
+                        .HasColumnType("longtext");
+
                     b.Property<Guid?>("CreatedById")
                         .HasColumnType("char(36)");
 
@@ -267,6 +270,9 @@ namespace OpenSettings.Migrations.MySql.Data.Migrations.OpenSettings.OpenSetting
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .HasColumnType("longblob");
+
+                    b.Property<string>("Spa")
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("StoreInSeparateFile")
                         .HasColumnType("tinyint(1)");
