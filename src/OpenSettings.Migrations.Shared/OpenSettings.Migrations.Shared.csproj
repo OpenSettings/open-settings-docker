@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OpenSettings.AspNetCore" Version="1.1.0" />
+    <PackageReference Include="OpenSettings.AspNetCore" Version="1.1.1" />
   </ItemGroup>
 
 </Project>

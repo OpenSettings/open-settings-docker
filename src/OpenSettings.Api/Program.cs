@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Ogu.AspNetCore.Compressions;
 using OpenSettings.Api;
-using OpenSettings.AspNetCore;
+using OpenSettings.AspNetCore.Extensions;
 using OpenSettings.Configurations;
 using OpenSettings.Extensions;
 using OpenSettings.Models;
