@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0-alpine AS build
 WORKDIR /app
 
 COPY ./src/OpenSettings.Api/OpenSettings.Api.csproj ./src/OpenSettings.Api/
@@ -15,7 +15,7 @@ COPY ./src ./src
 WORKDIR /app/src/OpenSettings.Api
 RUN dotnet publish -c Release -o /out --no-restore
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:9.0-alpine AS runtime
 WORKDIR /app
 
 RUN apk add --no-cache icu-libs
