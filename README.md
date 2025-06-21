@@ -1,5 +1,6 @@
 # <img src="logo/open-settings-logo.png" alt="Header" width="24"/> OpenSettings Docker Image
 
+[![.NET Core Desktop](https://github.com/OpenSettings/open-settings-docker/actions/workflows/dotnet.yml/badge.svg?branch=master)](https://github.com/OpenSettings/open-settings-docker/actions/workflows/dotnet.yml)
 ![Docker Image Version](https://img.shields.io/docker/v/opensettings/open-settings?logo=docker)
 [![Docs](https://img.shields.io/badge/docs-online-blue)](https://docs.opensettings.net)
 [![GitHub](https://img.shields.io/badge/•-open--settings-blue?logo=github)](https://github.com/OpenSettings/open-settings)
