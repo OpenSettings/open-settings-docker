@@ -33,9 +33,9 @@ openSettingsConfiguration.Provider.Orm.ConfigureDbContext = optsBuilder =>
 await builder.Host.UseOpenSettingsAsync(openSettingsConfiguration);
 
 builder.Services.Configure<BrotliCompressionProviderOptions>(opts => opts.Level = openSettingsConfiguration.Provider.CompressionLevel);
-builder.Services.Configure<ZstdCompressionProviderOptions>(opts => opts.Level = openSettingsConfiguration.Provider.CompressionLevel);
+builder.Services.Configure<ZstdCompressionProviderOptions>(opts => { });
 builder.Services.Configure<GzipCompressionProviderOptions>(opts => opts.Level = openSettingsConfiguration.Provider.CompressionLevel);
-builder.Services.Configure<DeflateCompressionProviderOptions>(opts => opts.Level = openSettingsConfiguration.Provider.CompressionLevel);
+builder.Services.Configure<DeflateCompressionProviderOptions>(opts => { });
 
 builder.Services.AddResponseCompression(opts =>
 {
